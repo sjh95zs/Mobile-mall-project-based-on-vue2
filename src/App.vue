@@ -5,8 +5,10 @@
         <mt-header fixed title="42's Mall project"></mt-header>
 
 
-        <!--中间路由 router-view 区域-->
-        <h1>123</h1>
+        <!--中间 路由router-view 区域-->
+        <transition mode="out-in">
+			<router-view></router-view>
+		</transition>
 
         <!--底部Tabbar区域-->
         <nav class="mui-bar mui-bar-tab">
@@ -20,7 +22,8 @@
 			</router-link>
 			<router-link class="mui-tab-item-llb" to="/shopcar">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-					<span class="mui-badge" id="badge">{{ $store.getters.getAllCount }}</span>
+					<span class="mui-badge" id="badge"></span>
+					<!-- {{ $store.getters.getAllCount }} -->
 				</span>
 				<span class="mui-tab-label">购物车</span>
 			</router-link>
@@ -36,7 +39,22 @@
 </script>
 
 <style lang="scss" scoped>
-.app-container{
-    padding-top: 40px   ;
-}
+	.app-container{
+    	padding-top: 40px;
+		padding-bottom: 50px;
+		overflow-x: hidden;
+	}
+	.v-enter{
+		opacity: 0;
+		transition: translateX(100%);
+	}
+	.v-leave-to{
+		opacity: 0;
+		transform: translateX(-100%);
+		position: absolute;
+	}
+	.v-enter-active,
+	.v-leave-active{
+		transition: all 0.5s ease;
+	}
 </style>

@@ -72,13 +72,35 @@ import Vue from 'vue';
 
 import app from './App.vue';
 
-import {Header} from 'mint-ui'
+import VueRouter from 'vue-router';
 
-import './lib/mui/css/mui.min.css'
+import router from './router.js';
 
-Vue.component(Header.name, Header)
+import VueResource from 'vue-resource';
+
+import moment from 'moment';
+
+import {Header, Swipe, SwipeItem, Button} from 'mint-ui';
+
+import './lib/mui/css/mui.min.css';
+import './lib/mui/css/icons-extra.css';
+import './lib/mui/fonts/mui-icons-extra.ttf';
+
+Vue.component(Header.name, Header);
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
+
+Vue.use(VueRouter);
+Vue.use(VueResource);
+Vue.filter('dtaFormt', function(dataStr, pattern = "YYYY-MM-DD HH-mm-ss"){
+    return moment(dataStr).format(pattern);
+})
+
+Vue.http.options.root = 'http://www.escook.cn/';
 
 new Vue({
     el: '#app',
-    render: c => c(app)
-})
+    render: c => c(app),
+    router
+});
