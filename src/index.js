@@ -80,24 +80,35 @@ import VueResource from 'vue-resource';
 
 import moment from 'moment';
 
-import {Header, Swipe, SwipeItem, Button} from 'mint-ui';
+import VuePreview from 'vue-preview';
+
+// import {Header, Swipe, SwipeItem, Button, Lazyload} from 'mint-ui';
+
+import MintUi from 'mint-ui';
+import 'mint-ui/lib/style.css';
 
 import './lib/mui/css/mui.min.css';
 import './lib/mui/css/icons-extra.css';
 import './lib/mui/fonts/mui-icons-extra.ttf';
 
-Vue.component(Header.name, Header);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Button.name, Button);
+// Vue.component(Header.name, Header);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.component(Button.name, Button);
+// Vue.use(Lazyload);
+Vue.use(MintUi);
+Vue.use(VuePreview);
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
-Vue.filter('dtaFormt', function(dataStr, pattern = "YYYY-MM-DD HH-mm-ss"){
+Vue.filter('dateFormat', function(dataStr, pattern = "YYYY-MM-DD HH-mm-ss"){
     return moment(dataStr).format(pattern);
 })
 
-Vue.http.options.root = 'http://www.escook.cn/';
+Vue.http.options.root = 'http://api.cms.liulongbin.top/'
+// Vue.http.options.root = 'http://www.escook.cn:3000/';
+// Vue.http.options.root = 'http://ww1.studyit.io/';
+Vue.http.options.emulateJSON = true; //全局设置post表单数据格式
 
 new Vue({
     el: '#app',

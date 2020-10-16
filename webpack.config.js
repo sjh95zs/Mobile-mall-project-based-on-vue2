@@ -21,6 +21,7 @@ module.exports = {
     },
     devServer: {
         //这是配置dev-server命令参数的第二种形式，相对来说，这种方式麻烦一些
+        host: '0.0.0.0',
         open: true, //自动打开浏览器
         port: 3000, //设置启动的端口
         contentBase: 'src', //指定托管的根目录

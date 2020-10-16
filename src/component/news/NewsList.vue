@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h3>新闻列表页面</h3>
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
                 <router-link :to="'/home/newsinfo/' + item.id">
@@ -38,12 +37,11 @@ export default {
                 if(result.body.status === 0){
                     this.newslist = result.body.message;
                     //将数据保存在data中
-                    console.log(newlist);
                     
                 } else {
                     Toast("获取数据失败!")
                 }
-            })
+            }).catch((e) =>{});
         }
     }
 }
