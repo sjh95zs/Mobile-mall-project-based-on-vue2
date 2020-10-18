@@ -10,7 +10,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
     //这个配置文件，起始就是一个js文件，通过Node中的模块操作，向外暴露了一个配置对象
 
-    entry: path.join(__dirname,'./src/index.js'),
+    entry: path.join(__dirname,'./src/main.js'),
     //入口，表示，要使用webpack打包哪个文件
 
     output: {
@@ -21,7 +21,7 @@ module.exports = {
     },
     devServer: {
         //这是配置dev-server命令参数的第二种形式，相对来说，这种方式麻烦一些
-        host: '0.0.0.0',
+        host: 'localhost',
         open: true, //自动打开浏览器
         port: 3000, //设置启动的端口
         contentBase: 'src', //指定托管的根目录
